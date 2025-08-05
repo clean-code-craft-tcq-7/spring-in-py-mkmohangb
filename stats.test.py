@@ -30,5 +30,11 @@ class StatsTest(unittest.TestCase):
     self.assertTrue(math.isnan(computedStats['max']))
     self.assertTrue(math.isnan(computedStats['min']))
 
+  def test_avg_nan_for_absurd_input(self):
+    computedStats = statistics.calculateStats([1e10, -1, 9.2, 4.5, 1e5])
+    self.assertTrue(math.isnan(computedStats['avg']))
+    self.assertTrue(math.isnan(computedStats['max']))
+    self.assertTrue(math.isnan(computedStats['min']))
+
 if __name__ == "__main__":
   unittest.main()
